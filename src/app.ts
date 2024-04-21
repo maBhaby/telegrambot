@@ -1,4 +1,5 @@
 import TelegramBot from 'node-telegram-bot-api'
+import { MESSAGES_QUIZ_DAY_ONE } from './config/messages'
 
 const bot = new TelegramBot(process.env.TG_TOKEN as string, { polling: true })
 
@@ -45,13 +46,15 @@ bot.onText(/Зарегестрироваться/, async (msg) => {
   userMap.set(msg.from?.id, {
     event: 'fio',
     fio: '',
-    company: ''
+    company: '',
+    quiz: '',
+    quizStatus: ''
   })
   await bot.sendMessage(msg.chat.id, 'отлично, введите ваше фио')
 })
 
 bot.on('message', async (msg) => {
-  if (userMap.has(msg.from?.id)) {
+  if (userMap.has(msg.from?.id) && userMap.get(msg.from?.id).quiz === '') {
     const findedUser = userMap.get(msg.from?.id)
     if (findedUser.event === 'fio') {
       // тут ввели фио
@@ -67,11 +70,47 @@ bot.on('message', async (msg) => {
       console.log(userMap);
       return
     } else if (findedUser.event === 'finish') {
-      await bot.sendMessage(msg.chat.id, 'БроБ ты уже зареган')
+      /**
+       * @description скорее всего удалить это надо
+       */
+      // await bot.sendMessage(msg.chat.id, 'Бро ты уже зареган')
       console.log(userMap);
-      
       return
     }
+  }
+
+  if (userMap.has(msg.from?.id) && userMap.get(msg.from?.id).quiz !== '' && userMap.get(msg.from?.id).quizStatus === 'started') {
+    console.log('msg after answer on test', msg);
+  }
+})
+
+bot.onText(/\/Пройти тест/, async (msg) => {
+  if (userMap.has(msg.from?.id) && userMap.get(msg.from?.id).event === 'finish') {
+    const findedUser = userMap.get(msg.from?.id)
+
+    findedUser.quiz = 'day 1'
+    findedUser.quizStatus = 'started'
+
+    await bot.sendMessage(msg.chat.id, MESSAGES_QUIZ_DAY_ONE.QUIZ_1.question, {
+      reply_markup: {
+        keyboard: [
+          [{text: MESSAGES_QUIZ_DAY_ONE.QUIZ_1.answers.first.text}],
+          [{text: MESSAGES_QUIZ_DAY_ONE.QUIZ_1.answers.second.text}],
+          [{text: MESSAGES_QUIZ_DAY_ONE.QUIZ_1.answers.third.text}],
+          [{text: MESSAGES_QUIZ_DAY_ONE.QUIZ_1.answers.fourth.text}]
+        ]
+      }
+    })
+
+    // findedUser.quizStatus = 'finished'
+
+    // await bot.sendMessage(msg.chat.id, 'Спасибо что прошли тест. Следующий откроется завтра')
+    // await bot.sendMessage(msg.chat.id, `Результаты попозже`)
+
+    console.log('Пошла возняя');
+    
+  } else {
+    await bot.sendMessage(msg.chat.id, 'Тебе пока нельзя')
   }
 })
 
