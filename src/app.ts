@@ -1,6 +1,9 @@
 import TelegramBot from 'node-telegram-bot-api'
 import { MESSAGES_QUIZ_DAY_ONE } from './config/messages'
 
+import { App } from './core/App'
+import { runtimeConfig } from './config/runtimeConfig'
+
 const bot = new TelegramBot(process.env.TG_TOKEN as string, { polling: true })
 
 // bot.on('text', async (msg) => {
@@ -115,3 +118,9 @@ bot.onText(/\/Пройти тест/, async (msg) => {
 })
 
 bot.on('polling_error', (err) => console.log(err.message))
+
+/**
+ * @new 
+ */
+
+new App(runtimeConfig.TOKEN).initTelegramBot()
