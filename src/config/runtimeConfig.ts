@@ -1,7 +1,7 @@
 type ENV = {
-  TOKEN: string
+  TG_TOKEN: string
 }
 
 export const runtimeConfig = ((): ENV => ({
-  TOKEN: process.env.TOKEN as string
+  TG_TOKEN: process.env.TG_TOKEN as string
 }))()
