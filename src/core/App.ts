@@ -1,4 +1,8 @@
 import TelegramBot from 'node-telegram-bot-api'
+import { mainMenuWithAllCommand } from '../config/keyboards'
+// import { getRouter } from '../routes'
+import { UserController } from '../controllers'
+import { UserService } from '../services/user.service'
 
 export class App {
   private readonly _TOKEN: string
@@ -21,27 +25,20 @@ export class App {
     })
 
     this._setAllCommandToMenu()
-    this._initRoutes(this.getAppInstance())
+    // this._provideControllers()
   }
 
-  private _initRoutes(app: TelegramBot) {
-  
+  private _initRoutes() {
+    // getRouter(this._app)
   }
 
   private _setAllCommandToMenu() {
-    this._app.setMyCommands([
-      {
-        command: 'start',
-        description: 'Запуск бота',
-      },
-      {
-        command: 'ref',
-        description: 'Получить реферальную ссылку',
-      },
-      {
-        command: 'help',
-        description: 'Раздел помощи',
-      },
-    ])
+    this._app.setMyCommands(mainMenuWithAllCommand)
+  }
+
+  private _provideControllers () {
+    return {
+      userController: new UserController(this._app, new UserService(this._app))
+    }
   }
 }
