@@ -1,5 +1,5 @@
-import TelegramBot from 'node-telegram-bot-api'
 import { MESSAGES_QUIZ_DAY_ONE } from './config/messages'
+import "reflect-metadata"
 
 import { App } from './core/App'
 import { runtimeConfig } from './config/runtimeConfig'
@@ -17,7 +17,7 @@ import { runtimeConfig } from './config/runtimeConfig'
 //   }, 5000)
 // })
 
-const userMap = new Map()
+// const userMap = new Map()
 
 // bot.onText(/\/start/, async (msg) => {
 //   try {

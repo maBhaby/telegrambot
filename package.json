@@ -6,11 +6,17 @@
   "author": "Yupl <chursin_a@garpix.com>",
   "license": "MIT",
   "scripts": {
-    "start": "env-cmd -f .env nodemon src/app.ts"
+    "start": "env-cmd -f .env nodemon src/app.ts",
+    "typeorm": "node -r ts-node/register ./node_modules/typeorm/cli.js",
+    "create-migration": "yarn typeorm migration:create src/database/migrations/new-migration"
+    
   },
   "dependencies": {
     "@types/node-telegram-bot-api": "^0.64.6",
-    "node-telegram-bot-api": "^0.65.1"
+    "node-telegram-bot-api": "^0.65.1",
+    "reflect-metadata": "^0.2.2",
+    "sqlite3": "^5.1.7",
+    "typeorm": "^0.3.20"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",

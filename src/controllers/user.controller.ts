@@ -13,7 +13,7 @@ export class UserController {
     this._app.onText(/\/start/gi, this.start)
   }
 
-  async start(msg: Message) {
+  start = async (msg: Message) => {    
     await this.userService.start(msg)
   }
 }
