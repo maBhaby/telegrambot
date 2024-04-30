@@ -8,8 +8,8 @@
   "scripts": {
     "start": "env-cmd -f .env nodemon src/app.ts",
     "typeorm": "node -r ts-node/register ./node_modules/typeorm/cli.js",
-    "create-migration": "yarn typeorm migration:create src/database/migrations/new-migration"
-    
+    "create-migration": "yarn typeorm migration:create src/database/migrations/new-migration",
+    "migration-run": "npx typeorm-ts-node-commonjs migration:run -- -d src/core/App.ts"
   },
   "dependencies": {
     "@types/node-telegram-bot-api": "^0.64.6",

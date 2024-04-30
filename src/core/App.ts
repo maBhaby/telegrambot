@@ -13,7 +13,7 @@ export class App {
 
   private _app: TelegramBot
 
-  private db: DataSource
+  public db: DataSource
 
   constructor(token: string) {
     this._TOKEN = token
@@ -43,9 +43,10 @@ export class App {
     const appDataSource = new DataSource({
       type: 'sqlite',
       database: `${root}/database/db.sqlite`,
-      migrationsRun: true,
+      // migrationsRun: true,
+      synchronize: true,
       entities: [resolve(__dirname, "../", "entities", "*.entity.[t|j]s")],
-      migrations: [resolve(__dirname, "../", "database", "migrations", "*.[t|j]s")],
+      // migrations: [resolve(__dirname, "../", "database", "migrations", "*.[t|j]s")],
       logging: true
     })
 
@@ -54,7 +55,7 @@ export class App {
 
   private _provideControllers() {
     return {
-      userController: new UserController(this._app, new UserService(this._app))
+      userController: new UserController(this._app, new UserService(this._app, this.db))
     }
   }
 }
