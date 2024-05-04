@@ -33,8 +33,6 @@ export class UserController {
     })
 
     this._app.on('text', async (msg) => {
-      console.log(msg);
-      
       const finedUser = await this.userService.getUser(
         msg.from?.id as number
       )
@@ -44,6 +42,11 @@ export class UserController {
         finedUser.registrationStatus === USER_REG_STATUS.FIO
       ) {
         this.updateUserFullName(msg)
+      } else if (
+        finedUser.registrationStatus ===
+        USER_REG_STATUS.COMPANY
+      ) {
+        this.updateUserCompany(msg)
       }
     })
   }
@@ -59,6 +62,8 @@ export class UserController {
   updateUserFullName = (msg: Message) => {
     this.userService.updateUserFullName(msg)
   }
-}
 
-// export const userController = new UserController()
+  updateUserCompany = (msg: Message) => {
+    this.userService.updateUserCompany(msg)
+  }
+}

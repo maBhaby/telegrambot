@@ -11,3 +11,8 @@ export const USER_REG_STATUS = {
   COMPANY: 'company',
   FINISH: 'finish'
 } as const
+
+export const QUESTION_STATUSES = {
+  UNREAD: 'unread',
+  ANSWERED: 'answered'
+} as const

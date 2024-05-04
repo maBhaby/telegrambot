@@ -26,7 +26,6 @@ export class UserService {
   }
 
   async create(query: CallbackQuery) {
-    // console.log('query', query)
     const telegramId = query.from.id
     const chatId = query.message?.chat.id as number
 
@@ -52,7 +51,6 @@ export class UserService {
   async getUser (telegramId: number) {
     const userRepository = this.db.getRepository(User)
     const users = await userRepository.findOneBy({telegramId})
-    console.log('users', users);
     
     return users
   }
@@ -68,5 +66,18 @@ export class UserService {
     })
 
     this._app.sendMessage(msg.chat.id, 'Отлично, теперь введите вашу компанию')
+  }
+
+  async updateUserCompany(msg: Message) {
+    const userRepository = this.db.getRepository(User)
+    const telegramId = msg.from?.id as number
+    const company = msg.text
+
+    await userRepository.update({telegramId},{
+      company: company,
+      registrationStatus: USER_REG_STATUS.FINISH
+    })
+
+    this._app.sendMessage(msg.chat.id, 'Отлично, вы ЗАРЕГАНЫ')
   }
 }

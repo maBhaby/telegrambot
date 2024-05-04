@@ -1,9 +1,10 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { RegistrationStatusTypes } from "../interfaces/user.interfaces";
+import { UserQuizStatus } from "./user-quiz-status.entity";
 
 @Entity()
 export class User extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({name: 'user_id'})
   id: number
 
   @Column({name: 'telegram_id'})
@@ -23,6 +24,12 @@ export class User extends BaseEntity {
     type: 'text'
   })
   registrationStatus: RegistrationStatusTypes
+
+  @OneToMany(
+    () => UserQuizStatus,
+    (userQuizStatus) => userQuizStatus.user
+  )
+  userQuizStatus: UserQuizStatus[]
 
   constructor(user: Partial<User>) {
     super()
