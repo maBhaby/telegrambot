@@ -3,7 +3,8 @@ import path from "path";
 export const root: string = path.resolve(__dirname, "..")
 
 export const MAIN_QUERY_ACTIONS = {
-  SIGN_UP: 'Sign_up'
+  SIGN_UP: 'sign_up',
+  START_QUIZ: 'start_quiz'
 }
 
 export const USER_REG_STATUS = {

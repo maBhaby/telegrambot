@@ -7,7 +7,6 @@ import {
   MAIN_QUERY_ACTIONS,
   USER_REG_STATUS,
 } from '../config/commons'
-import { DataSource } from 'typeorm'
 
 export class UserController {
   constructor(

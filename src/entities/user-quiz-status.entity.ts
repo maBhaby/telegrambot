@@ -5,12 +5,18 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
-  PrimaryGeneratedColumn,
+  PrimaryColumn,
 } from 'typeorm'
 import { Quiz } from './quiz.entity'
 import { User } from './user.entity'
-
+@Entity()
 export class UserQuizStatus extends BaseEntity {
+  @PrimaryColumn({ name: 'user_id' })
+  userId: number
+
+  @PrimaryColumn({ name: 'quiz_id' })
+  quizId: number
+
   @Column({ name: 'quiz_status', type: 'text' })
   status: string
 

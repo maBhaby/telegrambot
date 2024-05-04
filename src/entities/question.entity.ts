@@ -1,6 +1,7 @@
-import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Quiz } from "./quiz.entity";
 import { QuestionStatusTypes } from "../interfaces/common.interfaces";
+import { UserQuestionStatus } from "./user-question-status.entity";
 
 @Entity()
 export class Question extends BaseEntity {
@@ -16,4 +17,10 @@ export class Question extends BaseEntity {
 
   @Column({type: 'text', name: 'question_status'})
   questionStatus: QuestionStatusTypes
+
+  @OneToMany(
+    () => UserQuestionStatus,
+    (userQuestionStatus) => userQuestionStatus.question
+  )
+  userQuestionStatus: UserQuestionStatus[]
 }

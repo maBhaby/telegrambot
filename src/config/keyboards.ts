@@ -19,3 +19,7 @@ export const mainMenuWithAllCommand: TelegramBot.BotCommand[] = [
 export const menuForRegUser: TelegramBot.InlineKeyboardButton[][] = [
   [{text: 'Зарегестрироваться', callback_data: MAIN_QUERY_ACTIONS.SIGN_UP}],
 ]
+
+export const menuForStartQuiz: TelegramBot.InlineKeyboardButton[][] = [
+  [{text: 'Пройти тест', callback_data: MAIN_QUERY_ACTIONS.START_QUIZ}],
+]
