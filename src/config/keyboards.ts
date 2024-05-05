@@ -1,4 +1,4 @@
-import TelegramBot from "node-telegram-bot-api";
+import TelegramBot, { KeyboardButton } from "node-telegram-bot-api";
 import { MAIN_QUERY_ACTIONS } from "./commons";
 
 export const mainMenuWithAllCommand: TelegramBot.BotCommand[] = [
@@ -22,4 +22,8 @@ export const menuForRegUser: TelegramBot.InlineKeyboardButton[][] = [
 
 export const menuForStartQuiz: TelegramBot.InlineKeyboardButton[][] = [
   [{text: 'Пройти тест', callback_data: MAIN_QUERY_ACTIONS.START_QUIZ}],
+]
+
+export const quizKeyboard: KeyboardButton[][] = [
+  [{text:'Да'}], [{text:'Нет'}]
 ]

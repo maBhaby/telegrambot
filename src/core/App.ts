@@ -6,8 +6,14 @@ import { mainMenuWithAllCommand } from '../config/keyboards'
 import { UserController } from '../controllers'
 import { root } from '../config/commons'
 import { resolve } from 'path'
-import { QuizJobsService, QuizService, UserService } from '../services'
+import {
+  QuizJobsService,
+  QuizService,
+  UserService,
+} from '../services'
 import { QuizController } from '../controllers/quiz.controller'
+import { Quiz } from '../entities/quiz.entity'
+import { CurrentQuiz } from '../entities/current-quiz.entity'
 
 export class App {
   private readonly _TOKEN: string
@@ -28,7 +34,7 @@ export class App {
     console.log('this._TOKEN', this._TOKEN)
 
     this._app = new TelegramBot(this._TOKEN, {
-      polling: true
+      polling: true,
     })
 
     // this._setAllCommandToMenu()
@@ -41,7 +47,7 @@ export class App {
   //   this._app.setMyCommands(mainMenuWithAllCommand)
   // }
 
-  private _createJobs () {
+  private _createJobs() {
     new QuizJobsService(this.db, this._app)
   }
 
@@ -50,26 +56,63 @@ export class App {
       type: 'sqlite',
       database: `${root}/database/db.sqlite`,
       synchronize: true,
-      entities: [resolve(__dirname, "../", "entities", "*.entity.[t|j]s")],
+      entities: [
+        resolve(
+          __dirname,
+          '../',
+          'entities',
+          '*.entity.[t|j]s'
+        ),
+      ],
       // migrations: [resolve(__dirname, "../", "database", "migrations", "*.[t|j]s")],
-      logging: true
+      // logging: true,
     })
 
     this.db = await appDataSource.initialize()
+
+    const currQuiz = { id: 1, name: 'none', activeCount: 0 }
+
+    await this.db
+      .getRepository(CurrentQuiz)
+      .createQueryBuilder('currentQuiz')
+      .insert()
+      .values([currQuiz])
+      .execute()
+
+    await this.db
+      .getRepository(Quiz)
+      .createQueryBuilder('quiz')
+      .insert()
+      .values([
+        {
+          isActiveQuiz: false,
+          quizName: 'day1',
+          currentQuiz: currQuiz,
+        },
+        {
+          isActiveQuiz: false,
+          quizName: 'day2',
+          currentQuiz: currQuiz,
+        },
+        {
+          isActiveQuiz: false,
+          quizName: 'day3',
+          currentQuiz: currQuiz,
+        },
+      ])
+      .execute()
   }
 
   private _provideControllers() {
     return {
-      userController: 
-        new UserController(
-          this._app, 
-          new UserService(this._app, this.db)
-        ),
-      quizController: 
-        new QuizController(
-          this._app,
-          new QuizService(this._app, this.db)
-        )
+      userController: new UserController(
+        this._app,
+        new UserService(this._app, this.db)
+      ),
+      quizController: new QuizController(
+        this._app,
+        new QuizService(this._app, this.db)
+      ),
     }
   }
 }

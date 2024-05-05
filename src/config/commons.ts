@@ -17,3 +17,11 @@ export const QUESTION_STATUSES = {
   UNREAD: 'unread',
   ANSWERED: 'answered'
 } as const
+
+export const QUIZ_VARIANTS = {
+  DAY_1: 'day1',
+  DAY_2: 'day2',
+  DAY_3: 'day3',
+} as const
+
+export const QUIZ_VARIANTS_ARR = Object.values(QUIZ_VARIANTS)

@@ -1,4 +1,3 @@
-import { type } from 'os'
 import {
   BaseEntity,
   Column,
@@ -22,6 +21,9 @@ export class UserQuizStatus extends BaseEntity {
 
   // @Column(name: 'current_question')
   // question: string
+
+  @Column({name: 'is_active_quiz'})
+  isActiveQuiz: boolean
 
   @ManyToOne(() => Quiz, (quiz) => quiz.userQuizStatus)
   @JoinColumn({name: 'quiz_id'})
