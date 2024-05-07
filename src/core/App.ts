@@ -4,7 +4,7 @@ import { DataSource } from 'typeorm'
 import { mainMenuWithAllCommand } from '../config/keyboards'
 // import { getRouter } from '../routes'
 import { UserController } from '../controllers'
-import { root } from '../config/commons'
+import { QUIZ_VARIANTS, root } from '../config/commons'
 import { resolve } from 'path'
 import {
   QuizJobsService,
@@ -14,6 +14,7 @@ import {
 import { QuizController } from '../controllers/quiz.controller'
 import { Quiz } from '../entities/quiz.entity'
 import { CurrentQuiz } from '../entities/current-quiz.entity'
+import { createDate } from '../lib/common.lib'
 
 export class App {
   private readonly _TOKEN: string
@@ -72,35 +73,38 @@ export class App {
 
     const currQuiz = { id: 1, name: 'none', activeCount: 0 }
 
-    await this.db
-      .getRepository(CurrentQuiz)
-      .createQueryBuilder('currentQuiz')
-      .insert()
-      .values([currQuiz])
-      .execute()
+    // await this.db
+    //   .getRepository(CurrentQuiz)
+    //   .createQueryBuilder('currentQuiz')
+    //   .insert()
+    //   .values([currQuiz])
+    //   .execute()
 
-    await this.db
-      .getRepository(Quiz)
-      .createQueryBuilder('quiz')
-      .insert()
-      .values([
-        {
-          isActiveQuiz: false,
-          quizName: 'day1',
-          currentQuiz: currQuiz,
-        },
-        {
-          isActiveQuiz: false,
-          quizName: 'day2',
-          currentQuiz: currQuiz,
-        },
-        {
-          isActiveQuiz: false,
-          quizName: 'day3',
-          currentQuiz: currQuiz,
-        },
-      ])
-      .execute()
+    // await this.db
+    //   .getRepository(Quiz)
+    //   .createQueryBuilder('quiz')
+    //   .insert()
+    //   .values([
+    //     {
+    //       isActiveQuiz: false,
+    //       quizName: QUIZ_VARIANTS.DAY_1,
+    //       currentQuiz: currQuiz,
+    //       startDate: createDate(2024, 4, 7)
+    //     },
+    //     {
+    //       isActiveQuiz: false,
+    //       quizName: QUIZ_VARIANTS.DAY_2,
+    //       currentQuiz: currQuiz,
+    //       startDate: createDate(2024, 4, 8)
+    //     },
+    //     {
+    //       isActiveQuiz: false,
+    //       quizName: QUIZ_VARIANTS.DAY_3,
+    //       currentQuiz: currQuiz,
+    //       startDate: createDate(2024, 4, 9)
+    //     },
+    //   ])
+    //   .execute()
   }
 
   private _provideControllers() {
