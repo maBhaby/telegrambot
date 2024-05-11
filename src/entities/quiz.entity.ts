@@ -9,7 +9,6 @@ import {
 } from 'typeorm'
 import { Question } from './question.entity'
 import { UserQuizStatus } from './user-quiz-status.entity'
-import { CurrentQuiz } from './current-quiz.entity'
 
 @Entity()
 export class Quiz extends BaseEntity {
@@ -33,11 +32,4 @@ export class Quiz extends BaseEntity {
     (userQuizStatus) => userQuizStatus.quiz
   )
   userQuizStatus: UserQuizStatus[]
-
-  @ManyToOne(
-    () => CurrentQuiz,
-    (currentQuiz) => currentQuiz.quiz
-  )
-  @JoinColumn({name: 'current_quiz_id'})
-  currentQuiz: CurrentQuiz
 }

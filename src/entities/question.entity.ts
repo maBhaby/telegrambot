@@ -2,6 +2,7 @@ import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGe
 import { Quiz } from "./quiz.entity";
 import { QuestionStatusTypes } from "../interfaces/common.interfaces";
 import { UserQuestionStatus } from "./user-question-status.entity";
+import { QuestionAnswer } from "./question-answer.entity";
 
 @Entity()
 export class Question extends BaseEntity {
@@ -9,14 +10,23 @@ export class Question extends BaseEntity {
   id: number
 
   @Column({ type: 'text' })
-  question: string | null
+  question: string 
+  
+  @Column({type: 'text', name: 'question_status'})
+  questionStatus: QuestionStatusTypes
 
+  @Column({ name: 'question_number'})
+  questionNumber: number
+  
   @ManyToOne(() => Quiz, (quiz) => quiz.questions)
   @JoinColumn({name: 'quiz_id'})
   quiz: Quiz
 
-  @Column({type: 'text', name: 'question_status'})
-  questionStatus: QuestionStatusTypes
+  @OneToMany(
+  () => QuestionAnswer, 
+  (questionAnswer) => questionAnswer.question
+  )
+  questionAnswer: QuestionAnswer[]
 
   @OneToMany(
     () => UserQuestionStatus,

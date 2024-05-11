@@ -8,10 +8,13 @@ export class UserQuestionStatus {
   userId: number
 
   @PrimaryColumn({ name: 'question_id' })
-  quizId: number
+  questionId: number
 
   @Column({name: 'question_status', type: 'text'})
-  status: string
+  status: 'active' | 'answered'
+
+  @Column({name: 'is_correct_answer', nullable: true})
+  isCorrectAnswer: boolean
 
   @ManyToOne(
     () => User,

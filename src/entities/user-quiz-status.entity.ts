@@ -18,6 +18,9 @@ export class UserQuizStatus extends BaseEntity {
 
   @Column({ name: 'quiz_status', type: 'text' })
   status: string
+  
+  @Column({ name: 'current_question_number' })
+  currentQuestionNumber: number
 
   // @Column(name: 'current_question')
   // question: string

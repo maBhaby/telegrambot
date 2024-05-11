@@ -13,8 +13,10 @@ import {
 } from '../services'
 import { QuizController } from '../controllers/quiz.controller'
 import { Quiz } from '../entities/quiz.entity'
-import { CurrentQuiz } from '../entities/current-quiz.entity'
 import { createDate } from '../lib/common.lib'
+import { Question } from '../entities/question.entity'
+import { QuestionStatusTypes } from '../interfaces/common.interfaces'
+import { QuestionAnswer } from '../entities/question-answer.entity'
 
 export class App {
   private readonly _TOKEN: string
@@ -71,38 +73,115 @@ export class App {
 
     this.db = await appDataSource.initialize()
 
-    const currQuiz = { id: 1, name: 'none', activeCount: 0 }
-
-    // await this.db
-    //   .getRepository(CurrentQuiz)
-    //   .createQueryBuilder('currentQuiz')
-    //   .insert()
-    //   .values([currQuiz])
-    //   .execute()
+    //  const quiz = {
+    //   isActiveQuiz: false,
+    //   quizName: QUIZ_VARIANTS.DAY_1,
+    //   startDate: createDate(2024, 4, 11),
+    // }
 
     // await this.db
     //   .getRepository(Quiz)
     //   .createQueryBuilder('quiz')
     //   .insert()
     //   .values([
-    //     {
-    //       isActiveQuiz: false,
-    //       quizName: QUIZ_VARIANTS.DAY_1,
-    //       currentQuiz: currQuiz,
-    //       startDate: createDate(2024, 4, 7)
-    //     },
+    //     quiz,
     //     {
     //       isActiveQuiz: false,
     //       quizName: QUIZ_VARIANTS.DAY_2,
-    //       currentQuiz: currQuiz,
+
     //       startDate: createDate(2024, 4, 8)
     //     },
     //     {
     //       isActiveQuiz: false,
     //       quizName: QUIZ_VARIANTS.DAY_3,
-    //       currentQuiz: currQuiz,
+
     //       startDate: createDate(2024, 4, 9)
     //     },
+    //   ])
+    //   .execute()
+      
+
+    // const question = {
+    //   questionStatus: 'unread' as QuestionStatusTypes,
+    //   question: 'Столица России?',
+    //   questionNumber: 1,
+    //   quiz: quiz,
+    // }
+
+    // const answer1 = {
+    //   text: 'Москва',
+    //   question,
+    //   isCorrect: true
+    // }
+
+    // const answer2 = {
+    //   text: 'Беларусь',
+    //   question,
+    //   isCorrect: false
+    // }
+    // const answer3 = {
+    //   text: 'Жопа',
+    //   question,
+    //   isCorrect: false
+    // }
+    // const answer4 = {
+    //   text: 'НеДома',
+    //   question,
+    //   isCorrect: false
+    // }
+
+    // const question2 = {
+    //   questionStatus: 'unread' as QuestionStatusTypes,
+    //   question: 'Кто такой Рома Жёлудь?',
+    //   questionNumber: 2,
+    //   quiz: quiz,
+    // }
+
+    // const answer12 = {
+    //   text: 'Хз',
+    //   question: question2, 
+    //   isCorrect: true
+    // }
+
+    // const answer22 = {
+    //   text: 'Без Понятия',
+    //   question: question2,
+    //   isCorrect: false
+    // }
+    // const answer32 = {
+    //   text: 'Вообще',
+    //   question: question2,
+    //   isCorrect: false
+    // }
+    // const answer42 = {
+    //   text: 'Не пон',
+    //   question: question2,
+    //   isCorrect: false
+    // }
+
+    // await this.db
+    //   .getRepository(Question)
+    //   .createQueryBuilder('question')
+    //   .insert()
+    //   .values([
+    //     question,
+    //     question2
+    //   ])
+    //   .execute()
+
+    // await this.db
+    //   .getRepository(QuestionAnswer)
+    //   .createQueryBuilder('questionAnswer')
+    //   .insert()
+    //   .values([
+    //     answer1,
+    //     answer2,
+    //     answer3,
+    //     answer4,
+    //     answer12,
+    //     answer22,
+    //     answer32,
+    //     answer42
     //   ])
     //   .execute()
   }

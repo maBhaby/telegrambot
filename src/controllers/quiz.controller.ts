@@ -1,4 +1,4 @@
-import TelegramBot, { CallbackQuery } from "node-telegram-bot-api";
+import TelegramBot, { CallbackQuery, Message } from "node-telegram-bot-api";
 import { QuizService } from "../services";
 import { MAIN_QUERY_ACTIONS } from "../config/commons";
 
@@ -11,9 +11,7 @@ export class QuizController {
   }
 
   private _initRoutes () {
-    this.app.on('callback_query', async (msg) => {
-      console.log("MSG", msg);
-      
+    this.app.on('callback_query', async (msg) => {      
       try {
         if (msg.data === MAIN_QUERY_ACTIONS.START_QUIZ) {
           this.start(msg)
@@ -22,9 +20,17 @@ export class QuizController {
         console.log('Error :', err);
       }
     })
+
+    this.app.on('message', ctx => {
+      this.onAnswerQuestions(ctx)
+    })
   }
 
   start = (msg: CallbackQuery) => {
     this.quizService.startQuiz(msg)
+  }
+
+  onAnswerQuestions = (msg: Message) => {
+    this.quizService.onAnswerQuestions(msg)
   }
 }
