@@ -23,5 +23,5 @@ export const MESSAGES_QUIZ_DAY_ONE = {
 }
 
 export const MAIN_MESSAGES = {
-  START_QUIZ: 'Время квиза, гэй'
+  START_QUIZ: 'Время квиза'
 }

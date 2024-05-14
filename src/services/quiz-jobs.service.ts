@@ -34,17 +34,17 @@ export class QuizJobsService {
       await quizRep.update({id: currentActiveQuiz.id}, {isActiveQuiz: true}) 
       const allUsers = await userRep.find()
 
-      // allUsers?.map(async (user) => {
-      //   await this.app.sendMessage(
-      //     user.telegramId,
-      //     MAIN_MESSAGES.START_QUIZ,
-      //     {
-      //       reply_markup: {
-      //         inline_keyboard: menuForStartQuiz,
-      //       },
-      //     }
-      //   )
-      // })
+      allUsers?.map(async (user) => {
+        await this.app.sendMessage(
+          user.telegramId,
+          MAIN_MESSAGES.START_QUIZ,
+          {
+            reply_markup: {
+              inline_keyboard: menuForStartQuiz,
+            },
+          }
+        )
+      })
     })
     job.start()
   }
@@ -53,7 +53,7 @@ export class QuizJobsService {
     const userRep = this.db.getRepository(User)
     const quizRep = this.db.getRepository(Quiz)
   
-    const job = new CronJob('*/45 * * * * *', async () => {
+    const job = new CronJob('* 1 * * * *', async () => {
       const currentActiveQuiz = await quizRep.findOne({where: {isActiveQuiz: true}})
       if (!currentActiveQuiz) {
         console.log('ERROR: Не было запущенных квизов');
