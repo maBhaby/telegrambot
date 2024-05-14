@@ -12,12 +12,12 @@ export const mainMenuWithAllCommand: TelegramBot.BotCommand[] = [
   },
   {
     command: 'reg',
-    description: 'Зарегестрироваться',
+    description: 'Зарегистрироваться',
   },
 ]
 
 export const menuForRegUser: TelegramBot.InlineKeyboardButton[][] = [
-  [{text: 'Зарегестрироваться', callback_data: MAIN_QUERY_ACTIONS.SIGN_UP}],
+  [{text: 'Зарегистрироваться', callback_data: MAIN_QUERY_ACTIONS.SIGN_UP}],
 ]
 
 export const menuForStartQuiz: TelegramBot.InlineKeyboardButton[][] = [
