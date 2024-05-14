@@ -76,8 +76,14 @@ export class App {
     const quiz = {
       isActiveQuiz: false,
       quizName: QUIZ_VARIANTS.DAY_1,
-      startDate: createDate(2024, 4, 14),
+      startDate: createDate(2024, 4, 23),
     }
+
+    const quiz2 = {
+        isActiveQuiz: false,
+        quizName: QUIZ_VARIANTS.DAY_2,
+        startDate: createDate(2024, 4, 22)
+      }
 
     await this.db
       .getRepository(Quiz)
@@ -85,12 +91,7 @@ export class App {
       .insert()
       .values([
         quiz,
-        {
-          isActiveQuiz: false,
-          quizName: QUIZ_VARIANTS.DAY_2,
-
-          startDate: createDate(2024, 4, 8)
-        },
+        quiz2,
         {
           isActiveQuiz: false,
           quizName: QUIZ_VARIANTS.DAY_3,
@@ -103,7 +104,7 @@ export class App {
 
     const question = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Для каких этапов реабилитации подходят продукты линейки "Стэдис"?',
+      question: '<b>Секция «Реабилитация в РФ»</b> \n\n Для каких этапов реабилитации подходят продукты линейки "Стэдис"?',
       questionNumber: 1,
       quiz: quiz,
     }
@@ -209,7 +210,7 @@ export class App {
     const answer34 = {
       text: '3д стабилометрия',
       question: question4,
-      isCorrect: true
+      isCorrect: false
     }
     const answer44 = {
       text: 'возможность расчета угла отклонения корпуса от вертикали',
@@ -219,7 +220,7 @@ export class App {
 
     const question5 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Возможно ли дополнять уже имеющуюся у пользователя комплектацию оборудованием/методиками?',
+      question: '<b>Секция «Психофизиология»</b> \n\n Возможно ли дополнять уже имеющуюся у пользователя комплектацию оборудованием/методиками?',
       questionNumber: 5,
       quiz: quiz,
     }
@@ -349,7 +350,7 @@ export class App {
 
     const question9 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Выберите верное утверждение: бифазный магнитный стимулятор с двойным (угловым) индуктором…',
+      question: '<b>Секция «Неинвазивная нейромодуляция (ТМС, ПМС, TDCS)»</b> \n\n Выберите верное утверждение: бифазный магнитный стимулятор с двойным (угловым) индуктором…',
       questionNumber: 9,
       quiz: quiz,
     }
@@ -480,7 +481,7 @@ export class App {
 
     const question13 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Какой НЕ может быть кардиореабилитация?',
+      question: ' <b>Секция «Кардиореабилитация»</b> \n\n Какой НЕ может быть кардиореабилитация?',
       questionNumber: 13,
       quiz: quiz,
     }
@@ -575,7 +576,7 @@ export class App {
 
     const question17 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Можно ли использовать «Поли-Спектр-8/В» в качестве ЭКГ монитора во время операций?',
+      question: '<b>Секция «Ветеринария»</b> \n\n Можно ли использовать «Поли-Спектр-8/В» в качестве ЭКГ монитора во время операций?',
       questionNumber: 17,
       quiz: quiz,
     }
@@ -661,6 +662,152 @@ export class App {
       isCorrect: false
     }
 
+    const question1_q2 = {
+      questionStatus: 'unread' as QuestionStatusTypes,
+      question: '<b>Секция «ИОМ»</b> \n\n Каково основное назначение системы для интраоперационного нейромониторинга?',
+      questionNumber: 1,
+      quiz: quiz2,
+    }
+
+    const answer11_q2 = {
+      text: 'Предотвращение неврологического дефицита',
+      question: question1_q2, 
+      isCorrect: true
+    }
+
+    const answer21_q2 = {
+      text: 'Мониторинг глубины анастезии',
+      question: question1_q2,
+      isCorrect: false
+    }
+    const answer31_q2 = {
+      text: 'Мониторинг работы сердечно-сосудистой системы во время операции',
+      question: question1_q2,
+      isCorrect: false
+    }
+    const answer41_q2 = {
+      text: 'Мониторинг жизненных показателей пациента во время операции',
+      question: question1_q2,
+      isCorrect: false
+    }
+
+    const question2_q2 = {
+      questionStatus: 'unread' as QuestionStatusTypes,
+      question: 'После приобретения оборудования, компания Нейрософт предлагает специалисту бесплатно обучиться работе на системе для интраоперационного нейромониторинга «Нейро-ИОМ»',
+      questionNumber: 2,
+      quiz: quiz2,
+    }
+
+    const answer12_q2 = {
+      text: 'Проводятся теоретические и практические курсы по направлению «ИОМ во время нейрохирургических операций»',
+      question: question2_q2, 
+      isCorrect: false
+    }
+
+    const answer22_q2 = {
+      text: 'Проводятся теоретические и практические курсы по направлению «ИОМ во время нейрохирургических операций»',
+      question: question2_q2,
+      isCorrect: false
+    }
+    const answer32_q2 = {
+      text: 'Проводятся теоретические онлайн курсы и практические курсы по двум направлениям «ИОМ во время нейрохирургических операций», «ИОМ во время операций на щитовидной и паращитовидной железе и ЛОР операций»',
+      question: question2_q2,
+      isCorrect: true
+    }
+
+    const question3_q2 = {
+      questionStatus: 'unread' as QuestionStatusTypes,
+      question: 'Выберите одно преимущество, которое НЕ может быть указано при демонстрации пользователю системы для интраоперационного мониторинга «Нейро-ИОМ»',
+      questionNumber: 3,
+      quiz: quiz2,
+    }
+
+    const answer13_q2 = {
+      text: 'Мощный транскраниальный электрический стимулятор с различными типами стимула',
+      question: question3_q2, 
+      isCorrect: false
+    }
+
+    const answer23_q2 = {
+      text: '3 канала электрического стимулятора',
+      question: question3_q2,
+      isCorrect: true
+    }
+    const answer33_q2 = {
+      text: 'варианты исполнения для нейрофизиолога (мультимодальный мониторинг, гибкие настройки ПО) и нейрохирурга (несколько основных модальностей (TOF, DNS,спонтанная и вызванная ЭМГ), интуитивно понятный и простой нтерфейс, большой экран touchscreen)',
+      question: question3_q2,
+      isCorrect: false
+    }
+    const answer43_q2 = {
+      text: 'предустановленные шаблоны для большинства операций для быстрого начала мониторинга',
+      question: question3_q2,
+      isCorrect: false
+    }
+    const answer53_q2 = {
+      text: 'Программы стимуляции для автоматизации мониторинга',
+      question: question3_q2,
+      isCorrect: false
+    }
+
+    const question4_q2 = {
+      questionStatus: 'unread' as QuestionStatusTypes,
+      question: '<b>Секция «ЭЭГ»</b> \n\n Какой прибор из ЭЭГ-линейки может применяться для ЭЭГ, ПСГ, КВП, БОС, CFM и ЭМГ?',
+      questionNumber: 4,
+      quiz: quiz2,
+    }
+
+    const answer14_q2 = {
+      text: 'Нейрон-Спектр-4',
+      question: question4_q2, 
+      isCorrect: false
+    }
+
+    const answer24_q2 = {
+      text: 'Нейрон-Спектр-4/ВПМ',
+      question: question4_q2,
+      isCorrect: true
+    }
+    const answer34_q2 = {
+      text: 'Нейрон-Спектр-СМ',
+      question: question4_q2,
+      isCorrect: false
+    }
+   
+    const question5_q2 = {
+      questionStatus: 'unread' as QuestionStatusTypes,
+      question: 'Какой функциональной пробы НЕТ в списке общепринятых проб, проводимых при рутинном ЭЭГ-обследовании?',
+      questionNumber: 5,
+      quiz: quiz2,
+    }
+
+    const answer15_q2 = {
+      text: 'Фотостимуляция',
+      question: question5_q2, 
+      isCorrect: false
+    }
+
+    const answer25_q2 = {
+      text: 'Гиповентиляция',
+      question: question5_q2,
+      isCorrect: true
+    }
+    const answer35_q2 = {
+      text: 'Фоностимуляция',
+      question: question5_q2,
+      isCorrect: false
+    }
+    const answer45_q2 = {
+      text: 'Гипервентиляция',
+      question: question5_q2,
+      isCorrect: false
+    }
+    const answer55_q2 = {
+      text: 'Фоновая запись',
+      question: question5_q2,
+      isCorrect: false
+    }
+
+    
 
     await this.db
       .getRepository(Question)
