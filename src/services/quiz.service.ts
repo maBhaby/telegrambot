@@ -102,6 +102,7 @@ export class QuizService {
     >((el) => [{ text: el.text }])
 
     this.app.sendMessage(msg.from.id, question.question, {
+      parse_mode: 'HTML',
       reply_markup: {
         keyboard: answersKeyboard,
       },
@@ -247,6 +248,7 @@ export class QuizService {
     >((el) => [{ text: el.text }])
 
     this.app.sendMessage(msg.from.id, question.question, {
+      parse_mode: 'HTML',
       reply_markup: {
         keyboard: answersKeyboard,
       },
