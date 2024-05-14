@@ -16,7 +16,7 @@ export class UserService {
   async start(msg: Message) {
     await this._app.sendMessage(
       msg.chat.id,
-      'Привет дорогой друг! Нажми зарегаться чтоб принять участие в опросе',
+      'Добрый день! Чтобы участвовать в викторинах по итогам лекционных дней, вам необходимо пройти регистрацию.',
       {
         reply_markup: {
           inline_keyboard: menuForRegUser,
@@ -45,7 +45,7 @@ export class UserService {
     })
     this.db.manager.save(user)
 
-    this._app.sendMessage(chatId, 'Отлично, введите ФИО')
+    this._app.sendMessage(chatId, 'Введите ваше ФИО (Пример: Иванов Иван Иванович)')
   }
 
   async getUser (telegramId: number) {
@@ -65,7 +65,7 @@ export class UserService {
       registrationStatus: USER_REG_STATUS.COMPANY
     })
 
-    this._app.sendMessage(msg.chat.id, 'Отлично, теперь введите вашу компанию')
+    this._app.sendMessage(msg.chat.id, 'Введите название вашей компании (Пример: Нейрософт)')
   }
 
   async updateUserCompany(msg: Message) {
@@ -78,6 +78,6 @@ export class UserService {
       registrationStatus: USER_REG_STATUS.FINISH
     })
 
-    this._app.sendMessage(msg.chat.id, 'Отлично, вы ЗАРЕГАНЫ')
+    this._app.sendMessage(msg.chat.id, 'Вы уже зарегистрированы!')
   }
 }
