@@ -1,10 +1,7 @@
+import TelegramBot from 'node-telegram-bot-api'
 import { MESSAGES_QUIZ_DAY_ONE } from './config/messages'
-import "reflect-metadata"
 
-import { App } from './core/App'
-import { runtimeConfig } from './config/runtimeConfig'
-
-// const bot = new TelegramBot(process.env.TG_TOKEN as string, { polling: true })
+const bot = new TelegramBot(process.env.TG_TOKEN as string, { polling: true })
 
 // bot.on('text', async (msg) => {
 //   const msgWait = await bot.sendMessage(msg.chat.id, `Бот генерирует ответ...`)
@@ -17,110 +14,104 @@ import { runtimeConfig } from './config/runtimeConfig'
 //   }, 5000)
 // })
 
-// const userMap = new Map()
+const userMap = new Map()
 
-// bot.onText(/\/start/, async (msg) => {
-//   try {
-//     await bot.sendMessage(
-//       msg.chat.id,
-//       'Привет дорогой друг! Нажми зарегаться чтоб принять участие в опросе'
-//     )
-//   } catch (err) {
-//     console.log('error on start', err)
-//     await bot.sendMessage(msg.chat.id, 'упс, что то пошло не так')
-//   }
-// })
+bot.onText(/\/start/, async (msg) => {
+  try {
+    await bot.sendMessage(
+      msg.chat.id,
+      'Добрый день! Чтобы участвовать в викторинах по итогам лекционных дней, вам необходимо пройти регистрацию.'
+    )
+  } catch (err) {
+    console.log('error on start', err)
+    await bot.sendMessage(msg.chat.id, 'Ой, что то пошло не так...')
+  }
+})
 
-// bot.onText(/\/menu/, async (msg) => {
-//   await bot.sendMessage(msg.chat.id, 'menu bot', {
-//     reply_markup: {
-//       keyboard: [[{ text: 'Зарегестрироваться' }]],
-//       resize_keyboard: true
-//     }
-//   })
-// })
+bot.onText(/\/menu/, async (msg) => {
+  await bot.sendMessage(msg.chat.id, 'menu bot', {
+    reply_markup: {
+      keyboard: [[{ text: 'ya' }]],
+      resize_keyboard: true
+    }
+  })
+})
 
-// bot.onText(/Зарегестрироваться/, async (msg) => {
-//   if (userMap.has(msg.from?.id)) {
-//     await bot.sendMessage(msg.chat.id, 'Дурак что ли. ЗАРЕГАН')
-//     return 
-//   }
+bot.onText(/Зарегистрироваться/, async (msg) => {
+  if (userMap.has(msg.from?.id)) {
+    await bot.sendMessage(msg.chat.id, 'Вы уже зарегистрированы!')
+    return 
+  }
 
-//   userMap.set(msg.from?.id, {
-//     event: 'fio',
-//     fio: '',
-//     company: '',
-//     quiz: '',
-//     quizStatus: ''
-//   })
-//   await bot.sendMessage(msg.chat.id, 'отлично, введите ваше фио')
-// })
+  userMap.set(msg.from?.id, {
+    event: 'fio',
+    fio: '',
+    company: '',
+    quiz: '',
+    quizStatus: ''
+  })
+  await bot.sendMessage(msg.chat.id, 'Введите ваше ФИО (Пример: Иванов Иван Иванович)')
+})
 
-// bot.on('message', async (msg) => {
-//   if (userMap.has(msg.from?.id) && userMap.get(msg.from?.id).quiz === '') {
-//     const findedUser = userMap.get(msg.from?.id)
-//     if (findedUser.event === 'fio') {
-//       // тут ввели фио
-//       findedUser.fio = msg.text
-//       findedUser.event = 'company'
-//       await bot.sendMessage(msg.chat.id, 'Кайф. Введи компанию')
+bot.on('message', async (msg) => {
+  if (userMap.has(msg.from?.id) && userMap.get(msg.from?.id).quiz === '') {
+    const findedUser = userMap.get(msg.from?.id)
+    if (findedUser.event === 'fio') {
+      // тут ввели фио
+      findedUser.fio = msg.text
+      findedUser.event = 'company'
+      await bot.sendMessage(msg.chat.id, 'Введите название вашей компании (Пример: Нейрософт)')
 
-//       return 
-//     } else if (findedUser.event === 'company') {
-//       findedUser.company = msg.text
-//       findedUser.event = 'finish'
-//       await bot.sendMessage(msg.chat.id, 'Кайф. Мы зарегали вас')
-//       console.log(userMap);
-//       return
-//     } else if (findedUser.event === 'finish') {
-//       /**
-//        * @description скорее всего удалить это надо
-//        */
-//       // await bot.sendMessage(msg.chat.id, 'Бро ты уже зареган')
-//       console.log(userMap);
-//       return
-//     }
-//   }
+      return 
+    } else if (findedUser.event === 'company') {
+      findedUser.company = msg.text
+      findedUser.event = 'finish'
+      await bot.sendMessage(msg.chat.id, 'Регистраиця пройдена! К началу викторины мы пришлём вам уведомление!')
+      console.log(userMap);
+      return
+    } else if (findedUser.event === 'finish') {
+      /**
+       * @description скорее всего удалить это надо
+       */
+      // await bot.sendMessage(msg.chat.id, 'Бро ты уже зареган')
+      console.log(userMap);
+      return
+    }
+  }
 
-//   if (userMap.has(msg.from?.id) && userMap.get(msg.from?.id).quiz !== '' && userMap.get(msg.from?.id).quizStatus === 'started') {
-//     console.log('msg after answer on test', msg);
-//   }
-// })
+  if (userMap.has(msg.from?.id) && userMap.get(msg.from?.id).quiz !== '' && userMap.get(msg.from?.id).quizStatus === 'started') {
+    console.log('msg after answer on test', msg);
+  }
+})
 
-// bot.onText(/\/Пройти тест/, async (msg) => {
-//   if (userMap.has(msg.from?.id) && userMap.get(msg.from?.id).event === 'finish') {
-//     const findedUser = userMap.get(msg.from?.id)
+bot.onText(/\/Пройти тест/, async (msg) => {
+  if (userMap.has(msg.from?.id) && userMap.get(msg.from?.id).event === 'finish') {
+    const findedUser = userMap.get(msg.from?.id)
 
-//     findedUser.quiz = 'day 1'
-//     findedUser.quizStatus = 'started'
+    findedUser.quiz = 'day 1'
+    findedUser.quizStatus = 'started'
 
-//     await bot.sendMessage(msg.chat.id, MESSAGES_QUIZ_DAY_ONE.QUIZ_1.question, {
-//       reply_markup: {
-//         keyboard: [
-//           [{text: MESSAGES_QUIZ_DAY_ONE.QUIZ_1.answers.first.text}],
-//           [{text: MESSAGES_QUIZ_DAY_ONE.QUIZ_1.answers.second.text}],
-//           [{text: MESSAGES_QUIZ_DAY_ONE.QUIZ_1.answers.third.text}],
-//           [{text: MESSAGES_QUIZ_DAY_ONE.QUIZ_1.answers.fourth.text}]
-//         ]
-//       }
-//     })
+    await bot.sendMessage(msg.chat.id, MESSAGES_QUIZ_DAY_ONE.QUIZ_1.question, {
+      reply_markup: {
+        keyboard: [
+          [{text: MESSAGES_QUIZ_DAY_ONE.QUIZ_1.answers.first.text}],
+          [{text: MESSAGES_QUIZ_DAY_ONE.QUIZ_1.answers.second.text}],
+          [{text: MESSAGES_QUIZ_DAY_ONE.QUIZ_1.answers.third.text}],
+          [{text: MESSAGES_QUIZ_DAY_ONE.QUIZ_1.answers.fourth.text}]
+        ]
+      }
+    })
 
-//     // findedUser.quizStatus = 'finished'
+    // findedUser.quizStatus = 'finished'
 
-//     // await bot.sendMessage(msg.chat.id, 'Спасибо что прошли тест. Следующий откроется завтра')
-//     // await bot.sendMessage(msg.chat.id, `Результаты попозже`)
+    // await bot.sendMessage(msg.chat.id, 'Спасибо что прошли тест. Следующий откроется завтра')
+    // await bot.sendMessage(msg.chat.id, `Результаты попозже`)
 
-//     console.log('Пошла возняя');
+    console.log('Пошла возняя');
     
-//   } else {
-//     await bot.sendMessage(msg.chat.id, 'Тебе пока нельзя')
-//   }
-// })
+  } else {
+    await bot.sendMessage(msg.chat.id, 'Тебе пока нельзя')
+  }
+})
 
-// bot.on('polling_error', (err) => console.log(err.message))
-
-/**
- * @new 
- */
-
-new App(runtimeConfig.TG_TOKEN).initTelegramBot()
+bot.on('polling_error', (err) => console.log(err.message)) 
