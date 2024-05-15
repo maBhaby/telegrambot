@@ -25,3 +25,7 @@ export const QUIZ_VARIANTS = {
 } as const
 
 export const QUIZ_VARIANTS_ARR = Object.values(QUIZ_VARIANTS)
+
+export const MAIN_USERS = {
+  DANIL_COSTIN: 766776102 // ! telegramId
+}

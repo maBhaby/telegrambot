@@ -24,6 +24,9 @@ export class Quiz extends BaseEntity {
   @Column({name: 'start_date'})
   startDate: string
 
+  @Column({nullable: true, name: 'quiz_title'})
+  quizTitle: string 
+
   @OneToMany(() => Question, (question) => question.quiz)
   questions: Question[]
 

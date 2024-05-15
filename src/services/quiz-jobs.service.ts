@@ -26,18 +26,19 @@ export class QuizJobsService {
     const userRep = this.db.getRepository(User)
     const quizRep = this.db.getRepository(Quiz)
 
-    const job = new CronJob('*/30 * * * * *', async () => {
+    const job = new CronJob('0 */2 * * * *', async () => {
       const today = createDate()
       const currentActiveQuiz = await quizRep.findOne({where: {startDate: today}})
       // console.log('currentActiveQuiz', currentActiveQuiz);
       if (!currentActiveQuiz) return
-      await quizRep.update({id: currentActiveQuiz.id}, {isActiveQuiz: true}) 
-      const allUsers = await userRep.find()
+      await quizRep.update({id: currentActiveQuiz.id}, {isActiveQuiz: true})
+
+      const allUsers = await userRep.find({where: {registrationStatus: 'finish'}})
 
       allUsers?.map(async (user) => {
         await this.app.sendMessage(
           user.telegramId,
-          MAIN_MESSAGES.START_QUIZ,
+          currentActiveQuiz?.quizTitle ?? MAIN_MESSAGES.START_QUIZ,
           {
             reply_markup: {
               inline_keyboard: menuForStartQuiz,

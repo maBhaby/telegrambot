@@ -77,6 +77,13 @@ export class App {
       isActiveQuiz: false,
       quizName: QUIZ_VARIANTS.DAY_1,
       startDate: createDate(2024, 4, 14),
+      quizTitle: 'Время для викторины по итогу первого дня'
+    }
+    
+    const quiz2 = {
+      isActiveQuiz: false,
+      quizName: QUIZ_VARIANTS.DAY_2,
+      startDate: createDate(2024, 4, 8)
     }
 
     await this.db
@@ -85,12 +92,7 @@ export class App {
       .insert()
       .values([
         quiz,
-        {
-          isActiveQuiz: false,
-          quizName: QUIZ_VARIANTS.DAY_2,
-
-          startDate: createDate(2024, 4, 8)
-        },
+        quiz2,
         {
           isActiveQuiz: false,
           quizName: QUIZ_VARIANTS.DAY_3,

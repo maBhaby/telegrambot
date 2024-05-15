@@ -78,6 +78,6 @@ export class UserService {
       registrationStatus: USER_REG_STATUS.FINISH
     })
 
-    this._app.sendMessage(msg.chat.id, 'Вы уже зарегистрированы!')
+    this._app.sendMessage(msg.chat.id, 'Регистраиця пройдена! К началу викторины мы пришлём вам уведомление!')
   }
 }

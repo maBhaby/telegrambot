@@ -73,7 +73,10 @@ export class QuizService {
       /**
        * ! обновлять статус квиза
        */
-      this.app.sendMessage(msg.from.id, 'Вы уже прошли этот квиз')
+      this.app.sendMessage(
+        msg.from.id,
+        'Вы уже прошли этот квиз'
+      )
 
       return
     }
@@ -146,9 +149,14 @@ export class QuizService {
       },
     })
 
-    if (!currentUserQuiz || currentUserQuiz.status === 'finish') {
-      console.log('Мы не смогли найти активный квиз пользователя или он уже прошел этот квиз');
-      
+    if (
+      !currentUserQuiz ||
+      currentUserQuiz.status === 'finish'
+    ) {
+      console.log(
+        'Мы не смогли найти активный квиз пользователя или он уже прошел этот квиз'
+      )
+
       return
     }
 
@@ -173,7 +181,8 @@ export class QuizService {
       console.log('Не найден активный вопрос')
       return
     }
-
+    console.log('CURRENT USER and QUESTION', user, msg);
+    
     const answer = await questionAnswerRep.findOne({
       where: {
         question: userQuestStatus.question,
@@ -181,8 +190,10 @@ export class QuizService {
       },
     })
 
+    console.log('ЕГО ответ', user, answer);
+
     if (!answer) {
-      console.log('Не найден Ответ на вопрос в базе')
+      // console.log('Не найден Ответ на вопрос в базе')
       this.app.sendMessage(
         msg.from.id,
         'Пожалуйста, отвечайте только с помощью клавиатуры'
@@ -211,28 +222,42 @@ export class QuizService {
       },
       where: {
         quiz: activeQuiz,
-        questionNumber: currentUserQuiz.currentQuestionNumber + 1
+        questionNumber:
+          currentUserQuiz.currentQuestionNumber + 1,
       },
     })
 
     if (question === null) {
-      userQuizRep.update({
-        userId: currentUserQuiz.userId, 
-        quizId: currentUserQuiz.quizId
-      }, {
-        status: 'finish'
-      })
+      userQuizRep.update(
+        {
+          userId: currentUserQuiz.userId,
+          quizId: currentUserQuiz.quizId,
+        },
+        {
+          status: 'finish',
+        }
+      )
       
-      this.app.sendMessage(msg.from.id, 'Вопросы закончились')
+      const [,correctAnswerCount] = await UserQuestionStatusRep.findAndCountBy({isCorrectAnswer: true, userId: user.id})
+      
+      this.app.sendMessage(
+        msg.from.id,
+        `Викторина завершена. Вы набрали ${correctAnswerCount} баллов`,
+        { reply_markup: { remove_keyboard: true } }
+      )
       return
     }
 
-    userQuizRep.update({
-      quizId: currentUserQuiz.quizId,
-      userId: currentUserQuiz.userId
-    }, {
-      currentQuestionNumber: currentUserQuiz.currentQuestionNumber + 1
-    })
+    userQuizRep.update(
+      {
+        quizId: currentUserQuiz.quizId,
+        userId: currentUserQuiz.userId,
+      },
+      {
+        currentQuestionNumber:
+          currentUserQuiz.currentQuestionNumber + 1,
+      }
+    )
 
     await UserQuestionStatusRep.save({
       userId: user.id,
@@ -252,6 +277,6 @@ export class QuizService {
       },
     })
 
-    console.log('userQuestStatus', userQuestStatus)
+    // console.log('userQuestStatus', userQuestStatus)
   }
 }
