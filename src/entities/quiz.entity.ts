@@ -18,6 +18,9 @@ export class Quiz extends BaseEntity {
   @Column({name: 'is_active_quiz'})
   isActiveQuiz: boolean
 
+  @Column({ name: 'quiz_status', type: 'text' })
+  status: string; // initial, planned, active, closed
+
   @Column({ name: 'quiz_name' })
   quizName: string
 

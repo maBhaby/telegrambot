@@ -38,7 +38,7 @@ export class QuizService {
 
     const activeQuiz = await quizRep.findOne({
       where: {
-        isActiveQuiz: true,
+        status: 'active',
       },
     })
 
@@ -105,6 +105,7 @@ export class QuizService {
     >((el) => [{ text: el.text }])
 
     this.app.sendMessage(msg.from.id, question.question, {
+      parse_mode: 'HTML',
       reply_markup: {
         keyboard: answersKeyboard,
       },
@@ -126,7 +127,7 @@ export class QuizService {
     const quizRep = this.db.getRepository(Quiz)
     const activeQuiz = await quizRep.findOne({
       where: {
-        isActiveQuiz: true,
+        status: 'active',
       },
     })
     // console.log('active quiz', activeQuiz)
@@ -272,6 +273,7 @@ export class QuizService {
     >((el) => [{ text: el.text }])
 
     this.app.sendMessage(msg.from.id, question.question, {
+      parse_mode: 'HTML',
       reply_markup: {
         keyboard: answersKeyboard,
       },
