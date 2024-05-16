@@ -105,7 +105,7 @@ export class App {
 
     const question = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: '<b>Секция «Реабилитация в РФ»</b> \n\n Для каких этапов реабилитации подходят продукты линейки "Стэдис"?',
+      question: '<b>Секция «Биомеханика»</b> \n\n 1. Для каких этапов реабилитации подходят продукты линейки «Стэдис»?',
       questionNumber: 1,
       quiz: quiz,
     }
@@ -134,7 +134,7 @@ export class App {
 
     const question2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'В каком приказе при продаже Стэдис необходимо учитывать соответствие кода вида МИ?',
+      question: '2.	В каком приказе при продаже «Стэдис» необходимо учитывать соответствие кода вида МИ?',
       questionNumber: 2,
       quiz: quiz,
     }
@@ -142,7 +142,7 @@ export class App {
     const answer12 = {
       text: '878н',
       question: question2, 
-      isCorrect: true
+      isCorrect: false
     }
 
     const answer22 = {
@@ -163,7 +163,7 @@ export class App {
 
     const question3 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Сколько сенсоров "Нейросенс" включает стандартный комплект для анализа всех параметров ходьбы, в том числе анализа работы всех суставов нижних конечностей:',
+      question: '3.	Сколько сенсоров «Нейросенс» включает стандартный комплект для анализа всех параметров ходьбы, в том числе анализа работы всех суставов нижних конечностей?',
       questionNumber: 3,
       quiz: quiz,
     }
@@ -171,7 +171,7 @@ export class App {
     const answer13 = {
       text: '3',
       question: question3, 
-      isCorrect: true
+      isCorrect: false
     }
 
     const answer23 = {
@@ -182,7 +182,7 @@ export class App {
     const answer33 = {
       text: '7',
       question: question3,
-      isCorrect: false
+      isCorrect: true
     }
     const answer43 = {
       text: '12',
@@ -192,7 +192,7 @@ export class App {
 
     const question4 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Что не является преимуществом системы для стабилографии "Стэдис-Баланс" по сравнению со стабилоплатформами?',
+      question: '4.	Что не является преимуществом системы для стабилографии «Стэдис-Баланс» по сравнению со стабилоплатформами?',
       questionNumber: 4,
       quiz: quiz,
     }
@@ -221,7 +221,7 @@ export class App {
 
     const question5 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: '<b>Секция «Психофизиология»</b> \n\n Возможно ли дополнять уже имеющуюся у пользователя комплектацию оборудованием/методиками?',
+      question: '<b>Секция «НС-Психотест»</b> \n\n 5. Возможно ли дополнять уже имеющуюся у пользователя комплектацию «НС-Психотест» оборудованием/методиками?',
       questionNumber: 5,
       quiz: quiz,
     }
@@ -233,14 +233,14 @@ export class App {
     }
 
     const answer25 = {
-      text: 'возможность проведения статических и динамических тестов',
+      text: 'Нет',
       question: question5,
       isCorrect: false
     }
 
     const question6 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Какое оборудование в составе комплекса НС-Психотест позволяет объективно оценить силу и выносливость?',
+      question: '6. Какое оборудование в составе комплекса «НС-Психотест» позволяет объективно оценить силу и выносливость?',
       questionNumber: 6,
       quiz: quiz,
     }
@@ -277,7 +277,7 @@ export class App {
     }
 
     const answer17 = {
-      text: 'Психологи (медицинский психолог, психолог в образовании, социальный психолог, нейропсихолог и др.)',
+      text: 'Психологи (медицинский психолог, психолог в образовании и др.)',
       question: question7, 
       isCorrect: false
     }
@@ -326,7 +326,7 @@ export class App {
 
     const question8 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'С какими возрастными категориями возможно проводить диагностические исследования с использованием комплекса НС-Психотест?',
+      question: '8. С какими возрастными категориями возможно проводить диагностические исследования с использованием комплекса «НС-Психотест»?',
       questionNumber: 8,
       quiz: quiz,
     }
@@ -351,7 +351,7 @@ export class App {
 
     const question9 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: '<b>Секция «Неинвазивная нейромодуляция (ТМС, ПМС, TDCS)»</b> \n\n Выберите верное утверждение: бифазный магнитный стимулятор с двойным (угловым) индуктором…',
+      question: '<b>Секция «Неинвазивная нейромодуляция»</b> \n\n 9. Выберите верное утверждение: бифазный магнитный стимулятор с двойным (угловым) индуктором…',
       questionNumber: 9,
       quiz: quiz,
     }
@@ -363,7 +363,7 @@ export class App {
     }
 
     const answer29 = {
-      text: 'Является оптимальным для проведения сеансов ритмической периферической МС',
+      text: 'Является оптимальным для проведения ритмической периферической МС',
       question: question9,
       isCorrect: false
     }
@@ -388,7 +388,7 @@ export class App {
 
     const question10 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Основным преимуществом программы «Нейро-МС.NET» НЕ является',
+      question: '10. Основным преимуществом программы «Нейро-МС.NET» НЕ является',
       questionNumber: 10,
       quiz: quiz,
     }
@@ -420,7 +420,7 @@ export class App {
 
     const question11 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Какие виды стимуляции можно проводить с использованием прибора «Нейростим»?',
+      question: '11. Какие виды стимуляции можно проводить с использованием прибора «Нейростим»?',
       questionNumber: 11,
       quiz: quiz,
     }
@@ -451,7 +451,7 @@ export class App {
 
     const question12 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Системы каких производителей, поставляемых на рынок РФ, могут использоваться для проведения магнитной стимуляции с нейронавигацией в рамках оказания высокотехнологичной медицинской помощи (ВМП)? ',
+      question: '12. Системы каких производителей, поставляемых на рынок РФ, могут использоваться для проведения магнитной стимуляции с нейронавигацией в рамках оказания высокотехнологичной медицинской помощи (ВМП)? ',
       questionNumber: 12,
       quiz: quiz,
     }
@@ -482,7 +482,7 @@ export class App {
 
     const question13 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: ' <b>Секция «Кардиореабилитация»</b> \n\n Какой НЕ может быть кардиореабилитация?',
+      question: ' <b>Секция «Кардиореабилитация»</b> \n\n 13. Какой НЕ может быть кардиореабилитация?',
       questionNumber: 13,
       quiz: quiz,
     }
@@ -507,7 +507,7 @@ export class App {
 
     const question14 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Какой параметр регулируется в безопасном режиме в системе «Мультитренер»?',
+      question: '14. Какой параметр регулируется в безопасном режиме в системе «Мультитренер»?',
       questionNumber: 14,
       quiz: quiz,
     }
@@ -533,7 +533,7 @@ export class App {
 
     const question15 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'С помощью какого оборудования можно провести тест 6-минутной ходьбы?',
+      question: '15. С помощью какого оборудования можно провести тест 6-минутной ходьбы?',
       questionNumber: 15,
       quiz: quiz,
     }
@@ -552,7 +552,7 @@ export class App {
 
     const question16 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'По какому приказу продается «Мультитренер»?',
+      question: '16. По какому приказу продается «Мультитренер»?',
       questionNumber: 16,
       quiz: quiz,
     }
@@ -577,7 +577,7 @@ export class App {
 
     const question17 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: '<b>Секция «Ветеринария»</b> \n\n Можно ли использовать «Поли-Спектр-8/В» в качестве ЭКГ монитора во время операций?',
+      question: '<b>Секция «Ветеринария»</b> \n\n 17. Можно ли использовать «Поли-Спектр-8/В» в качестве ЭКГ монитора во время операций?',
       questionNumber: 17,
       quiz: quiz,
     }
@@ -596,7 +596,7 @@ export class App {
 
     const question18 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Где используются ЭЭГ аппараты в ветеринарной практике?',
+      question: '18. Где используются ЭЭГ аппараты в ветеринарной практике?',
       questionNumber: 18,
       quiz: quiz,
     }
@@ -621,7 +621,7 @@ export class App {
 
     const question19 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Где чаще всего используется электроретинограф?',
+      question: '19. Где чаще всего используется электроретинограф?',
       questionNumber: 19,
       quiz: quiz,
     }
@@ -640,7 +640,7 @@ export class App {
 
     const question20 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Что такое BAER-тест?',
+      question: '20. Что такое BAER-тест?',
       questionNumber: 20,
       quiz: quiz,
     }
@@ -665,7 +665,7 @@ export class App {
 
     const question1_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: '<b>Секция «ИОМ»</b> \n\n Каково основное назначение системы для интраоперационного нейромониторинга?',
+      question: '<b>Секция «ИОМ»</b> \n\n 1. Каково основное назначение системы для интраоперационного нейромониторинга?',
       questionNumber: 1,
       quiz: quiz2,
     }
@@ -694,13 +694,13 @@ export class App {
 
     const question2_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'После приобретения оборудования, компания Нейрософт предлагает специалисту бесплатно обучиться работе на системе для интраоперационного нейромониторинга «Нейро-ИОМ»',
+      question: '2. После приобретения оборудования, компания «Нейрософт» предлагает специалисту бесплатно обучиться работе на системе для интраоперационного нейромониторинга «Нейро-ИОМ»:',
       questionNumber: 2,
       quiz: quiz2,
     }
 
     const answer12_q2 = {
-      text: 'Проводятся теоретические и практические курсы по направлению «ИОМ во время нейрохирургических операций»',
+      text: 'проводятся только теоретические онлайн-курсы',
       question: question2_q2, 
       isCorrect: false
     }
@@ -718,7 +718,7 @@ export class App {
 
     const question3_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Выберите одно преимущество, которое НЕ может быть указано при демонстрации пользователю системы для интраоперационного мониторинга «Нейро-ИОМ»',
+      question: '3. Выберите одно преимущество, которое НЕ может быть указано при демонстрации пользователю системы для интраоперационного мониторинга «Нейро-ИОМ»',
       questionNumber: 3,
       quiz: quiz2,
     }
@@ -735,12 +735,12 @@ export class App {
       isCorrect: true
     }
     const answer33_q2 = {
-      text: 'варианты исполнения для нейрофизиолога (мультимодальный мониторинг, гибкие настройки ПО) и нейрохирурга (несколько основных модальностей (TOF, DNS,спонтанная и вызванная ЭМГ), интуитивно понятный и простой нтерфейс, большой экран touchscreen)',
+      text: 'Варианты исполнения для нейрофизиолога (мультимодальный мониторинг, гибкие настройки ПО) и нейрохирурга (несколько основных модальностей (TOF, DNS,спонтанная и вызванная ЭМГ), интуитивно понятный и простой нтерфейс, большой экран touchscreen)',
       question: question3_q2,
       isCorrect: false
     }
     const answer43_q2 = {
-      text: 'предустановленные шаблоны для большинства операций для быстрого начала мониторинга',
+      text: 'Предустановленные шаблоны для большинства операций для быстрого начала мониторинга',
       question: question3_q2,
       isCorrect: false
     }
@@ -752,7 +752,7 @@ export class App {
 
     const question4_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: '<b>Секция «ЭЭГ»</b> \n\n Какой прибор из ЭЭГ-линейки может применяться для ЭЭГ, ПСГ, КВП, БОС, CFM и ЭМГ?',
+      question: '<b>Секция «ЭЭГ»</b> \n\n 4. Какой прибор из ЭЭГ-линейки может применяться для ЭЭГ, ПСГ, КВП, БОС, CFM и ЭМГ?',
       questionNumber: 4,
       quiz: quiz2,
     }
@@ -776,7 +776,7 @@ export class App {
    
     const question5_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Какой функциональной пробы НЕТ в списке общепринятых проб, проводимых при рутинном ЭЭГ-обследовании?',
+      question: '5. Какой функциональной пробы НЕТ в списке общепринятых проб, проводимых при рутинном ЭЭГ-обследовании?',
       questionNumber: 5,
       quiz: quiz2,
     }
@@ -810,7 +810,7 @@ export class App {
 
     const question6_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Врач какой специальности занимается расшифровкой результатов ЭЭГ-обследований?',
+      question: '6. Врач какой специальности занимается расшифровкой результатов ЭЭГ-обследований?',
       questionNumber: 6,
       quiz: quiz2,
     }
@@ -834,7 +834,7 @@ export class App {
 
     const question7_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Врач какой специальности занимается расшифровкой результатов ЭЭГ-обследований?',
+      question: '7. Какой прибор ЭЭГ предлагать в госЛПУ если закупка будет по КТРУ?',
       questionNumber: 7,
       quiz: quiz2,
     }
@@ -842,7 +842,7 @@ export class App {
     const answer17_q2 = {
       text: 'Невролог',
       question: question7_q2, 
-      isCorrect: true
+      isCorrect: false
     }
 
     const answer27_q2 = {
@@ -853,18 +853,13 @@ export class App {
     const answer37_q2 = {
       text: 'Врач функциональной диагностики',
       question: question7_q2,
-      isCorrect: false
+      isCorrect: true
     }
 
-    const answer47_q2 = {
-      text: 'Врач функциональной диагностики',
-      question: question7_q2,
-      isCorrect: false
-    }
 
     const question8_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: '<b>Секция «Урология»</b> \n\n Что такое урофлоуметрия?',
+      question: '<b>Секция «Урология»</b> \n\n 8. Что такое урофлоуметрия?',
       questionNumber: 8,
       quiz: quiz2,
     }
@@ -893,7 +888,7 @@ export class App {
 
     const question9_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Основные исследуемые параметры при урофлоуметрии',
+      question: '9. Основные исследуемые параметры при урофлоуметрии^',
       questionNumber: 9,
       quiz: quiz2,
     }
@@ -917,7 +912,7 @@ export class App {
 
     const question10_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Ключевые пользователи-клиники:',
+      question: '10. Ключевые пользователи-клиники:',
       questionNumber: 10,
       quiz: quiz2,
     }
@@ -956,7 +951,7 @@ export class App {
 
     const question11_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Основное преимущество для потенциальных пользователей при покупке Амнис:',
+      question: '11. Основное преимущество для потенциальных пользователей при покупке Амнис:',
       questionNumber: 11,
       quiz: quiz2,
     }
@@ -980,7 +975,7 @@ export class App {
 
     const question12_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: '<b>Секция «ПСГ»</b> \n\n «Золотым стандартом» диагностики нарушений сна является:',
+      question: '<b>Секция «ПСГ»</b> \n\n 12. «Золотым стандартом» диагностики нарушений сна является:',
       questionNumber: 12,
       quiz: quiz2,
     }
@@ -1019,7 +1014,7 @@ export class App {
 
     const question13_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Выберите параметры, которые регистрирует Снорлекс',
+      question: '13. Выберите параметры, которые регистрирует Снорлекс:',
       questionNumber: 13,
       quiz: quiz2,
     }
@@ -1047,7 +1042,7 @@ export class App {
 
     const question14_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Респираторный полиграф Снорлекс по классификации РОС соответствует типам приборов',
+      question: '14. Респираторный полиграф Снорлекс по классификации РОС соответствует типам приборов',
       questionNumber: 14,
       quiz: quiz2,
     }
@@ -1085,7 +1080,7 @@ export class App {
 
     const question15_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Выберите утверждение, которое НЕ может быть причиной, почему выгодно продавать полисомнографы Нейрософт',
+      question: '15. Выберите утверждение, которое НЕ может быть причиной, почему выгодно продавать полисомнографы «Нейрософт»',
       questionNumber: 15,
       quiz: quiz2,
     }
@@ -1113,7 +1108,7 @@ export class App {
 
     const question1_q3 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: '<b>Секция «ЭКГ»</b> \n\n Что не является основным недостатком у электрокардиографов со встроенным термопринтером?',
+      question: '<b>Секция «ЭКГ»</b> \n\n 1. Что не является основным недостатком у электрокардиографов со встроенным термопринтером?',
       questionNumber: 1,
       quiz: quiz3,
     }
@@ -1137,7 +1132,7 @@ export class App {
 
     const question2_q3 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: '«Эргопойнт» - система для нагрузочного тестирования может поставляться к имеющемуся у больницы нагрузочному устройству?',
+      question: '2. «Эргопойнт» - система для нагрузочного тестирования может поставляться к имеющемуся у больницы нагрузочному устройству?',
       questionNumber: 2,
       quiz: quiz3,
     }
@@ -1156,7 +1151,7 @@ export class App {
 
     const question3_q3 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Какое оборудование НЕ может быть использовано для кардиоинтервалографии? ',
+      question: '3. Какое оборудование НЕ может быть использовано для кардиоинтервалографии? ',
       questionNumber: 3,
       quiz: quiz3,
     }
@@ -1180,7 +1175,7 @@ export class App {
 
     const question4_q3 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Какое оборудование нужно для оценки эластических свойств сосудов?',
+      question: '4. Какое оборудование нужно для оценки эластических свойств сосудов?',
       questionNumber: 4,
       quiz: quiz3,
     }
@@ -1197,19 +1192,19 @@ export class App {
       isCorrect: false
     }
     const answer34_q3 = {
-      text: 'Любой электрокардиограф производства Нейрософт с программой «Поли-Спектр.NET/Ритм»',
+      text: 'Любой электрокардиограф с ПО «Поли-Спектр.NET/Ритм»',
       question: question4_q3,
       isCorrect: false
     }
     const answer44_q3 = {
-      text: 'Любой электрокардиограф производства Нейрософт с программой «Поли-Спектр.NET/СРПВ»',
+      text: 'Любой электрокардиограф с ПО «Поли-Спектр.NET/СРПВ»',
       question: question4_q3,
       isCorrect: true
     }
 
     const question5_q3 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: '<b>Секция «ЭМГ/ВП/ЭРГ»</b> \n\n Что исследует ЭМГ?',
+      question: '<b>Секция «ЭМГ/ВП/ЭРГ»</b> \n\n 5. Что исследует ЭМГ?',
       questionNumber: 5,
       quiz: quiz3,
     }
@@ -1238,7 +1233,7 @@ export class App {
 
     const question6_q3 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Вызванных потенциалов какой модальности не существует?',
+      question: '6. Вызванных потенциалов какой модальности не существует?',
       questionNumber: 6,
       quiz: quiz3,
     }
@@ -1267,7 +1262,7 @@ export class App {
 
     const question7_q3 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Вызванных потенциалов какой модальности не существует?',
+      question: '7. Что исследуется с помощью ЭРГ?',
       questionNumber: 7,
       quiz: quiz3,
     }
@@ -1296,7 +1291,7 @@ export class App {
 
     const question8_q3 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'С каким миографом можно использовать ТМС?',
+      question: '8. С каким миографом можно использовать ТМС?',
       questionNumber: 8,
       quiz: quiz3,
     }
@@ -1325,7 +1320,7 @@ export class App {
 
     const question9_q3 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: '<b>Секция «Аудиология»</b> \n\n Какой прибор НЕ подходит для оснащения оториноларингологического кабинета? ',
+      question: '<b>Секция «Аудиология»</b> \n\n 9. Какой прибор НЕ подходит для оснащения оториноларингологического кабинета? ',
       questionNumber: 9,
       quiz: quiz3,
     }
@@ -1354,7 +1349,7 @@ export class App {
 
     const question10_q3 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Какой импенадсометрической методики нет в приборе "Аудио-СМАРТ"?',
+      question: 'Какой импенадсометрической методики нет в приборе «Аудио-СМАРТ»?',
       questionNumber: 10,
       quiz: quiz3,
     }
@@ -1388,7 +1383,7 @@ export class App {
 
     const question11_q3 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'В каком отделе органа слуха волосковые клетки преобразуют колебания в электрические нервные импульсы?',
+      question: '11. В каком отделе органа слуха волосковые клетки преобразуют колебания в электрические нервные импульсы?',
       questionNumber: 11,
       quiz: quiz3,
     }
@@ -1417,36 +1412,36 @@ export class App {
 
     const question12_q3 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Какие аудиологические приборы можно предлагать к продаже в отделения для больных с ОНМК (острыми нарушениями мозгового кровообращения)?',
+      question: '12. Какие аудиологические приборы можно предлагать к продаже в отделения для больных с ОНМК (острыми нарушениями мозгового кровообращения)?',
       questionNumber: 12,
       quiz: quiz3,
     }
 
     const answer112_q3 = {
-      text: 'Аудиометры, Приборы для регистрации отоакустической эмиссии',
+      text: 'Аудиометры, приборы для регистрации ОАЭ',
       question: question12_q3, 
       isCorrect: false
     }
 
     const answer212_q3 = {
-      text: 'Тимпанометры (импедансные аудиометры), Системы для регистрации слуховых ВП',
+      text: 'Тимпанометры, системы для регистрации СВП',
       question: question12_q3,
       isCorrect: false
     }
     const answer312_q3 = {
-      text: 'Приборы для регистрации отоакустической эмиссии, Системы для регистрации слуховых ВП',
+      text: 'Приборы для регистрации ОАЭ, системы для регистрации СВП',
       question: question12_q3,
       isCorrect: true
     }
     const answer412_q3 = {
-      text: 'Камертоны, Аудиометры, Приборы для регистрации отоакустической эмиссии',
+      text: 'Камертоны, аудиометры, приборы для регистрации ОАЭ',
       question: question12_q3,
       isCorrect: false
     }
 
     const question13_q3 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: '<b>Секция «Спирометрия»</b> \n\n Какое место занимает ХОБЛ (хроническая обструктивная болезнь легких) в структуре смертности в мире?',
+      question: '<b>Секция «Спирометрия»</b> \n\n 13. Какое место занимает ХОБЛ (хроническая обструктивная болезнь легких) в структуре смертности в мире?',
       questionNumber: 13,
       quiz: quiz3,
     }
@@ -1480,7 +1475,7 @@ export class App {
 
     const question14_q3 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Спирометрию НЕ используют для:',
+      question: '14. Спирометрию НЕ используют для:',
       questionNumber: 14,
       quiz: quiz3,
     }
@@ -1509,7 +1504,7 @@ export class App {
 
     const question15_q3 = {
       questionStatus: 'unread' as QuestionStatusTypes,
-      question: 'Что из ниже перечисленного НЕ явялется преимуществом спирометра "Спиро-Спектр"?',
+      question: '15. Что из ниже перечисленного НЕ явялется преимуществом спирометра «Спиро-Спектр»?',
       questionNumber: 15,
       quiz: quiz3,
     }
@@ -1698,7 +1693,6 @@ export class App {
         answer17_q2,
         answer27_q2,
         answer37_q2,
-        answer47_q2,
         answer18_q2,
         answer28_q2,
         answer38_q2,
