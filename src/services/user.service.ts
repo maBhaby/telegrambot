@@ -2,10 +2,11 @@ import TelegramBot, {
   CallbackQuery,
   Message,
 } from 'node-telegram-bot-api'
-import { DataSource } from 'typeorm'
+import { DataSource, In } from 'typeorm'
 import { User } from '../entities/user.entity'
 import { menuForRegUser } from '../config/keyboards'
 import { USER_REG_STATUS } from '../config/commons'
+import { UserQuestionStatus } from '../entities/user-question-status.entity'
 
 export class UserService {
   constructor(
@@ -78,6 +79,41 @@ export class UserService {
       registrationStatus: USER_REG_STATUS.FINISH
     })
 
-    this._app.sendMessage(msg.chat.id, 'Регистраиця пройдена! К началу викторины мы пришлём вам уведомление!')
+    this._app.sendMessage(msg.chat.id, 'Регистрация пройдена! К началу викторины мы пришлём вам уведомление!')
+  }
+
+  async getAllUserWithAnswers() {
+    const userRepository = this.db.getRepository(User)
+    const UserQuestionStatusRep = this.db.getRepository(
+      UserQuestionStatus
+    )
+
+    const allUserСompletedQuiz = await userRepository.find({
+      relations: ['userQuizStatus', ''],
+      where: {
+        registrationStatus: 'finish',
+        userQuizStatus: {
+          status: 'finish'
+        }
+      }
+    })
+
+    if (!allUserСompletedQuiz) {
+      console.log('Error: Не нашли юзеров с завершенными квизами');
+      return
+    }
+
+    const [answers, count] = await UserQuestionStatusRep.findAndCount({
+      where: {
+        user: In(allUserСompletedQuiz),
+        isCorrectAnswer: true
+      }
+    })
+    
+    if (!answers && !count) return
+
+    console.log('answers', answers);
+    console.log('count', count);
+
   }
 }

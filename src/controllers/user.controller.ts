@@ -5,7 +5,9 @@ import TelegramBot, {
 import { UserService } from '../services/user.service'
 import {
   MAIN_QUERY_ACTIONS,
+  MAIN_USERS,
   USER_REG_STATUS,
+  MAIN_USER_VAL
 } from '../config/commons'
 
 export class UserController {
@@ -47,6 +49,13 @@ export class UserController {
       ) {
         this.updateUserCompany(msg)
       }
+
+      if (
+        MAIN_USER_VAL.includes(finedUser.telegramId) && 
+        msg.text === 'results'
+      ) {
+        this.getAllUserWithAnswers()
+      }
     })
   }
 
@@ -64,5 +73,9 @@ export class UserController {
 
   updateUserCompany = (msg: Message) => {
     this.userService.updateUserCompany(msg)
+  }
+
+  getAllUserWithAnswers = () => {
+    this.userService
   }
 }
