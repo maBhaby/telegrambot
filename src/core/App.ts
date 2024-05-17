@@ -78,7 +78,7 @@ export class App {
       quizName: QUIZ_VARIANTS.DAY_1,
       status: 'initial',
       // startDate: createDate(2024, 4, 16),
-      startDate: '2024-05-17 12:05:00',
+      startDate: '2024-05-17 13:05:00',
       quizTitle: 'Время для викторины по итогам третьего дня!',
     }
 
@@ -86,7 +86,7 @@ export class App {
       isActiveQuiz: false,
       quizName: QUIZ_VARIANTS.DAY_2,
       // startDate: createDate(2024, 4, 16)
-      startDate: '2024-05-17 12:00:00',
+      startDate: '2024-05-17 13:00:00',
       status: 'initial',
       quizTitle:
         'Время для викторины по итогам второго дня!',
@@ -95,7 +95,7 @@ export class App {
     const quiz3 = {
       isActiveQuiz: false,
       quizName: QUIZ_VARIANTS.DAY_3,
-      startDate: '2024-05-17 12:10:00',
+      startDate: '2024-05-17 13:10:00',
       status: 'initial',
       quizTitle:
         'Время для викторины по итогам четвертого дня!',
@@ -719,7 +719,7 @@ export class App {
     const question2_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
       question:
-        '2. После приобретения оборудования, компания «Нейрософт» предлагает специалисту бесплатно обучиться работе на системе для интраоперационного нейромониторинга «Нейро-ИОМ»: \n\n  <i>*Направления «ИОМ во время нейрохирургических операций», «ИОМ во время операций на щитовидной и паращитовидной железе и ЛОР операций»</i>',
+        '2. После приобретения оборудования, компания «Нейрософт» предлагает специалисту бесплатно обучиться работе на системе для интраоперационного нейромониторинга «Нейро-ИОМ»: \n\n <i>*Направления «ИОМ во время нейрохирургических операций», «ИОМ во время операций на щитовидной и паращитовидной железе и ЛОР операций»</i>',
       questionNumber: 2,
       quiz: quiz2,
     }
@@ -736,7 +736,7 @@ export class App {
       isCorrect: false,
     }
     const answer32_q2 = {
-      text: 'Проводятся теоретические онлайн курсы и практические курсы по двум направлениям',
+      text: 'Проводятся теоретические онлайн курсы и практические курсы по двум направлениям*',
       question: question2_q2,
       isCorrect: true,
     }
