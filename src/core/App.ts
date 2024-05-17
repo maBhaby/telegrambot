@@ -78,27 +78,27 @@ export class App {
       quizName: QUIZ_VARIANTS.DAY_1,
       status: 'initial',
       // startDate: createDate(2024, 4, 16),
-      startDate: '2024-05-16 16:50:00',
-      quizTitle: 'Время для викторины по итогу второго дня',
+      startDate: '2024-05-17 12:05:00',
+      quizTitle: 'Время для викторины по итогам третьего дня!',
     }
 
     const quiz2 = {
       isActiveQuiz: false,
       quizName: QUIZ_VARIANTS.DAY_2,
       // startDate: createDate(2024, 4, 16)
-      startDate: '2024-05-16 16:55:00',
+      startDate: '2024-05-17 12:00:00',
       status: 'initial',
       quizTitle:
-        'Время для викторины по итогу третьего дня',
+        'Время для викторины по итогам второго дня!',
     }
 
     const quiz3 = {
       isActiveQuiz: false,
       quizName: QUIZ_VARIANTS.DAY_3,
-      startDate: '2024-05-16 17:00:00',
+      startDate: '2024-05-17 12:10:00',
       status: 'initial',
       quizTitle:
-        'Время для викторины по итогу конечного дня',
+        'Время для викторины по итогам четвертого дня!',
       // startDate: createDate(2024, 4, 16)
     }
 
@@ -112,7 +112,7 @@ export class App {
     const question = {
       questionStatus: 'unread' as QuestionStatusTypes,
       question:
-        'Для каких этапов реабилитации подходят продукты линейки "Стэдис"?',
+        'Для каких этапов реабилитации подходят продукты линейки «Стэдис»?',
       questionNumber: 1,
       quiz: quiz,
     }
@@ -719,13 +719,13 @@ export class App {
     const question2_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
       question:
-        '2. После приобретения оборудования, компания «Нейрософт» предлагает специалисту бесплатно обучиться работе на системе для интраоперационного нейромониторинга «Нейро-ИОМ»:',
+        '2. После приобретения оборудования, компания «Нейрософт» предлагает специалисту бесплатно обучиться работе на системе для интраоперационного нейромониторинга «Нейро-ИОМ»: \n\n  <i>*Направления «ИОМ во время нейрохирургических операций», «ИОМ во время операций на щитовидной и паращитовидной железе и ЛОР операций»</i>',
       questionNumber: 2,
       quiz: quiz2,
     }
 
     const answer12_q2 = {
-      text: 'проводятся только теоретические онлайн-курсы',
+      text: 'Проводятся только теоретические онлайн-курсы',
       question: question2_q2,
       isCorrect: false,
     }
@@ -736,7 +736,7 @@ export class App {
       isCorrect: false,
     }
     const answer32_q2 = {
-      text: 'Проводятся теоретические онлайн курсы и практические курсы по двум направлениям «ИОМ во время нейрохирургических операций», «ИОМ во время операций на щитовидной и паращитовидной железе и ЛОР операций»',
+      text: 'Проводятся теоретические онлайн курсы и практические курсы по двум направлениям',
       question: question2_q2,
       isCorrect: true,
     }
@@ -761,12 +761,12 @@ export class App {
       isCorrect: true,
     }
     const answer33_q2 = {
-      text: 'Варианты исполнения для нейрофизиолога (мультимодальный мониторинг, гибкие настройки ПО) и нейрохирурга (несколько основных модальностей (TOF, DNS,спонтанная и вызванная ЭМГ), интуитивно понятный и простой нтерфейс, большой экран touchscreen)',
+      text: 'Варианты исполнения для нейрофизиолога и нейрохирурга, интуитивно понятный и простой интерфейс, большой экран',
       question: question3_q2,
       isCorrect: false,
     }
     const answer43_q2 = {
-      text: 'Предустановленные шаблоны для большинства операций для быстрого начала мониторинга',
+      text: 'Предустановленные шаблоны для быстрого начала мониторинга',
       question: question3_q2,
       isCorrect: false,
     }
@@ -870,20 +870,20 @@ export class App {
     }
 
     const answer17_q2 = {
-      text: 'Невролог',
+      text: 'Нейрон-Спектр-СМ',
       question: question7_q2,
-      isCorrect: false,
+      isCorrect: true,
     }
 
     const answer27_q2 = {
-      text: 'Психиатр',
+      text: 'Нейрон-Спектр-4',
       question: question7_q2,
       isCorrect: false,
     }
     const answer37_q2 = {
-      text: 'Врач функциональной диагностики',
+      text: 'Нейрон-Спектр-63',
       question: question7_q2,
-      isCorrect: true,
+      isCorrect: false,
     }
 
     const question8_q2 = {
@@ -919,7 +919,7 @@ export class App {
     const question9_q2 = {
       questionStatus: 'unread' as QuestionStatusTypes,
       question:
-        '9. Основные исследуемые параметры при урофлоуметрии^',
+        '9. Основные исследуемые параметры при урофлоуметрии:',
       questionNumber: 9,
       quiz: quiz2,
     }
@@ -1207,7 +1207,7 @@ export class App {
       isCorrect: true,
     }
     const answer33_q3 = {
-      text: 'Любой электрокардиограф производства Нейрософт с программой «Поли-Спектр.NET/Ритм»',
+      text: 'Любой электрокардиограф «Нейрософт» с ПО «Поли-Спектр.NET/Ритм»',
       question: question3_q3,
       isCorrect: false,
     }
@@ -1675,7 +1675,6 @@ export class App {
         answer87,
         answer18,
         answer28,
-        answer38,
         answer38,
         answer19,
         answer29,
