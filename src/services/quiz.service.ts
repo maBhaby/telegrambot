@@ -174,6 +174,7 @@ export class QuizService {
           question: true,
         },
         where: {
+          userId: user.id,
           status: 'active',
         },
       })
@@ -238,8 +239,12 @@ export class QuizService {
           status: 'finish',
         }
       )
-      
-      const [,correctAnswerCount] = await UserQuestionStatusRep.findAndCountBy({isCorrectAnswer: true, userId: user.id})
+      /**
+       * @desc
+       * Неправильная выборка (берет вообще все ответы)
+       */
+      const [,correctAnswerCount] = await UserQuestionStatusRep.findAndCountBy({
+        isCorrectAnswer: true, userId: user.id, })
       
       this.app.sendMessage(
         msg.from.id,
