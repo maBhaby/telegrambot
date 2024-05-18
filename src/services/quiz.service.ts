@@ -248,7 +248,7 @@ export class QuizService {
       
       this.app.sendMessage(
         msg.from.id,
-        `Викторина завершена. Вы набрали ${correctAnswerCount} баллов`,
+        `Викторина завершена. На данный момент, ваш итоговый результат — ${correctAnswerCount} баллов`,
         { reply_markup: { remove_keyboard: true } }
       )
       return
