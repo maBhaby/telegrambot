@@ -76,6 +76,6 @@ export class UserController {
   }
 
   getAllUserWithAnswers = () => {
-    this.userService
+    this.userService.getAllUserWithAnswers()
   }
 }

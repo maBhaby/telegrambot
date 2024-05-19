@@ -167,7 +167,7 @@ export class QuizService {
       UserQuestionStatus
     )
     const questionRep = this.db.getRepository(Question)
-
+    // ! Прокинуть id юзера
     const userQuestStatus =
       await UserQuestionStatusRep.findOne({
         relations: {
@@ -175,6 +175,7 @@ export class QuizService {
         },
         where: {
           status: 'active',
+          userId: user.id
         },
       })
 
