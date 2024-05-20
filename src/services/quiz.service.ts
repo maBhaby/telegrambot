@@ -269,8 +269,6 @@ export class QuizService {
       userId: user.id,
       questionId: question.id,
       status: 'active',
-      user,
-      question,
     })
 
     const answersKeyboard = question.questionAnswer.map<
