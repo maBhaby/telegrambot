@@ -174,8 +174,8 @@ export class QuizService {
           question: true,
         },
         where: {
+          userId: user.id,
           status: 'active',
-          userId: user.id
         },
       })
 
@@ -183,7 +183,7 @@ export class QuizService {
       console.log('Не найден активный вопрос')
       return
     }
-    console.log('CURRENT USER and QUESTION', user, msg);
+    // console.log('CURRENT USER and QUESTION', user, msg);
     
     const answer = await questionAnswerRep.findOne({
       where: {
@@ -192,7 +192,7 @@ export class QuizService {
       },
     })
 
-    console.log('ЕГО ответ', user, answer);
+    // console.log('ЕГО ответ', user, answer);
 
     if (!answer) {
       // console.log('Не найден Ответ на вопрос в базе')
@@ -209,7 +209,7 @@ export class QuizService {
      */
     await UserQuestionStatusRep.update(
       {
-        userId: userQuestStatus.userId,
+        userId: user.id,
         questionId: userQuestStatus.questionId,
       },
       {
@@ -239,12 +239,16 @@ export class QuizService {
           status: 'finish',
         }
       )
-      
-      const [,correctAnswerCount] = await UserQuestionStatusRep.findAndCountBy({isCorrectAnswer: true, userId: user.id})
+      /**
+       * @desc
+       * Неправильная выборка (берет вообще все ответы)
+       */
+      const [,correctAnswerCount] = await UserQuestionStatusRep.findAndCountBy({
+        isCorrectAnswer: true, userId: user.id, })
       
       this.app.sendMessage(
         msg.from.id,
-        `Викторина завершена. Вы набрали ${correctAnswerCount} баллов`,
+        `Викторина завершена. На данный момент, ваш итоговый результат — ${correctAnswerCount} баллов`,
         { reply_markup: { remove_keyboard: true } }
       )
       return

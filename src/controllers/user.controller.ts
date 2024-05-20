@@ -54,7 +54,7 @@ export class UserController {
         MAIN_USER_VAL.includes(finedUser.telegramId) && 
         msg.text === 'results'
       ) {
-        this.getAllUserWithAnswers()
+        this.getAllUserWithAnswers(msg)
       }
     })
   }
@@ -75,7 +75,7 @@ export class UserController {
     this.userService.updateUserCompany(msg)
   }
 
-  getAllUserWithAnswers = () => {
-    this.userService.getAllUserWithAnswers()
+  getAllUserWithAnswers = (msg: Message) => {
+    this.userService.getAllUserWithAnswers(msg)
   }
 }

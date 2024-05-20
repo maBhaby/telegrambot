@@ -6,7 +6,6 @@ import { DataSource } from 'typeorm'
 import { User } from '../entities/user.entity'
 import { menuForRegUser } from '../config/keyboards'
 import { USER_REG_STATUS } from '../config/commons'
-import { UserQuestionStatus } from '../entities/user-question-status.entity'
 
 export class UserService {
   constructor(
@@ -82,14 +81,16 @@ export class UserService {
     this._app.sendMessage(msg.chat.id, 'Регистрация пройдена! К началу викторины мы пришлём вам уведомление!')
   }
 
-  async getAllUserWithAnswers() {
-    const userRepository = this.db.getRepository(User)
-    const UserQuestionStatusRep = this.db.getRepository(
-      UserQuestionStatus
-    )
+  async getAllUserWithAnswers(msg: Message) {
+
+    type UserCountModel = {
+      full_name: string,
+      company: string,
+      u_count: number
+    }
 
     const entityManager = this.db.createQueryRunner()
-    const result = await entityManager.manager.query(`
+    const result = await entityManager.manager.query<UserCountModel[]>(`
       SELECT u.full_name, u.company, COUNT(u.user_id) as u_count
       FROM user as u
       
@@ -108,35 +109,10 @@ export class UserService {
       ORDER BY u_count DESC
     `)
 
-    console.log('asdasd', result);
+    const formattedVal = result.reduce((acc, {full_name, company, u_count}, i) => {
+      return acc + `${i + 1}. Пользователь:${full_name} Компания:${company} Количество правильных ответов:${u_count} \n`
+    }, '')
     
-
-    // const allUserСompletedQuiz = await userRepository.find({
-    //   relations: ['userQuizStatus', ''],
-    //   where: {
-    //     registrationStatus: 'finish',
-    //     userQuizStatus: {
-    //       status: 'finish'
-    //     }
-    //   }
-    // })
-
-    // if (!allUserСompletedQuiz) {
-    //   console.log('Error: Не нашли юзеров с завершенными квизами');
-    //   return
-    // }
-
-    // const [answers, count] = await UserQuestionStatusRep.findAndCount({
-    //   where: {
-    //     user: In(allUserСompletedQuiz),
-    //     isCorrectAnswer: true
-    //   }
-    // })
-    
-    // if (!answers && !count) return
-
-    // console.log('answers', answers);
-    // console.log('count', count);
-
+    this._app.sendMessage(msg.chat.id, formattedVal)
   }
 }

@@ -71,7 +71,7 @@ export class QuizJobsService {
 
     // Добавь время к дате
     const startDate: Date = new Date(quiz.startDate);
-    const stopDate: Date = new Date(startDate.getTime() + 2 * 60 * 1000) // 2 минуты
+    const stopDate: Date = new Date(startDate.getTime() + 4 * 60 * 1000) // 2 минуты
   
     const job = new CronJob(stopDate, async () => {
       const allUsers = await userRep.find({
