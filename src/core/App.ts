@@ -78,7 +78,7 @@ export class App {
       quizName: QUIZ_VARIANTS.DAY_1,
       status: 'initial',
       // startDate: createDate(2024, 4, 16),
-      startDate: '2024-05-19 18:57:00',
+      startDate: '2024-05-20 12:17:00',
       quizTitle: 'Время для викторины по итогу второго дня',
     }
 
@@ -86,7 +86,7 @@ export class App {
       isActiveQuiz: false,
       quizName: QUIZ_VARIANTS.DAY_2,
       // startDate: createDate(2024, 4, 16)
-      startDate: '2024-05-19 19:02:00',
+      startDate: '2024-05-20 12:23:00',
       status: 'initial',
       quizTitle:
         'Время для викторины по итогам третьего дня!',
@@ -95,7 +95,7 @@ export class App {
     const quiz3 = {
       isActiveQuiz: false,
       quizName: QUIZ_VARIANTS.DAY_3,
-      startDate: '2024-05-19 19:07:00',
+      startDate: '2024-05-20 12:29:00',
       status: 'initial',
       quizTitle:
         'Время для викторины по итогам четвертого дня!',
